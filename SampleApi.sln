@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi", "SampleApi\SampleApi.csproj", "{3F6410BB-A2B3-4276-9D58-CB790D3C4536}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApi.Entities", "SampleApi.Entities\SampleApi.Entities.csproj", "{C4B8AAAE-49ED-4C91-A8D0-0E52422521A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{3F6410BB-A2B3-4276-9D58-CB790D3C4536}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F6410BB-A2B3-4276-9D58-CB790D3C4536}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F6410BB-A2B3-4276-9D58-CB790D3C4536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B8AAAE-49ED-4C91-A8D0-0E52422521A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B8AAAE-49ED-4C91-A8D0-0E52422521A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B8AAAE-49ED-4C91-A8D0-0E52422521A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B8AAAE-49ED-4C91-A8D0-0E52422521A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

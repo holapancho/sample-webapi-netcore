@@ -1,112 +1,112 @@
 ﻿/*==============================================================*/
 /* Table: comuna                                                */
 /*==============================================================*/
-create table comuna (
-   id_comuna            int4                 not null,
-   id_provincia         int4                 null,
-   nombre               varchar(100)         not null,
-   constraint pk_comuna primary key (id_comuna)
+create table Comuna (
+   IdComuna            int4                 not null,
+   IdProvincia         int4                 null,
+   Nombre               varchar(100)         not null,
+   constraint pk_Comuna primary key (IdComuna)
 );
 
 /*==============================================================*/
-/* Table: perfil_usuario                                        */
+/* Table: PerfilUsuario                                        */
 /*==============================================================*/
-create table perfil_usuario (
-   id_perfil_usuario    int4                 not null,
-   nombre               varchar(100)         not null,
-   constraint pk_perfil_usuario primary key (id_perfil_usuario)
+create table PerfilUsuario (
+   IdPerfilUsuario    int4                 not null,
+   Nombre               varchar(100)         not null,
+   constraint pk_PerfilUsuario primary key (IdPerfilUsuario)
 );
 
 /*==============================================================*/
-/* Table: persona                                               */
+/* Table: Persona                                               */
 /*==============================================================*/
-create table persona (
-   id_persona           bigserial            not null,
-   id_comuna            int4                 null,
-   run                  int4                 null,
-   nombres              varchar(255)         not null,
-   apellido_paterno      varchar(255)         not null,
-   apellido_materno      varchar(255)         null,
-   fechanacimiento      date                 null,
-   telefono             varchar(20)          null,
-   email                varchar(100)         not null,
-   constraint pk_persona primary key (id_persona)
+create table Persona (
+   IdPersona           bigserial            not null,
+   IdComuna            int4                 null,
+   Run                  int4                 null,
+   Nombres              varchar(255)         not null,
+   ApellidoPaterno      varchar(255)         not null,
+   ApellidoMaterno      varchar(255)         null,
+   FechaNacimiento      date                 null,
+   Telefono             varchar(20)          null,
+   Email                varchar(100)         not null,
+   constraint pk_Persona primary key (IdPersona)
 );
 
 /*==============================================================*/
-/* Index: idx_persona_email                                     */
+/* Index: idx_PersonaEmail                                     */
 /*==============================================================*/
-create unique index idx_persona_email on persona (
-email
+create unique index idx_PersonaEmail on Persona (
+Email
 );
 
 /*==============================================================*/
-/* Index: idx_persona_run                                       */
+/* Index: idx_PersonaRun                                       */
 /*==============================================================*/
-create unique index idx_persona_run on persona (
-run
+create unique index idx_PersonaRun on Persona (
+Run
 );
 
 
 /*==============================================================*/
-/* Table: provincia                                             */
+/* Table: Provincia                                             */
 /*==============================================================*/
-create table provincia (
-   id_provincia         int4                 not null,
-   id_region            int4                 null,
-   nombre               varchar(100)         not null,
-   constraint pk_provincia primary key (id_provincia)
+create table Provincia (
+   IdProvincia         int4                 not null,
+   IdRegion            int4                 null,
+   Nombre               varchar(100)         not null,
+   constraint pk_Provincia primary key (IdProvincia)
 );
 
 /*==============================================================*/
-/* Table: region                                                */
+/* Table: Region                                                */
 /*==============================================================*/
-create table region (
-   id_region            int4                 not null,
-   nombre               varchar(100)         not null,
-   constraint pk_region primary key (id_region)
+create table Region (
+   IdRegion            int4                 not null,
+   Nombre               varchar(100)         not null,
+   constraint pk_Region primary key (IdRegion)
 );
 
 /*==============================================================*/
-/* Table: usuario                                               */
+/* Table: Usuario                                               */
 /*==============================================================*/
-create table usuario (
-   id_persona           int8                 not null,
-   id_perfil_usuario    int4                 not null,
-   username             varchar(255)         not null,
-   password             varchar(500)         null,
-   habilitado           boolean              not null,
-   constraint pk_usuario primary key (id_persona)
+create table Usuario (
+   IdPersona           int8                 not null,
+   IdPerfilUsuario    int4                 not null,
+   Username             varchar(255)         not null,
+   Password             varchar(500)         null,
+   Habilitado           boolean              not null,
+   constraint pk_Usuario primary key (IdPersona)
 );
 
 /*==============================================================*/
-/* Index: idx_usuario_username                                  */
+/* Index: idx_UsuarioUsername                                  */
 /*==============================================================*/
-create unique index idx_usuario_username on usuario (
-username
+create unique index idx_UsuarioUsername on Usuario (
+Username
 );
 
-alter table comuna
-   add constraint fk_comuna_reference_provinci foreign key (id_provincia)
-      references provincia (id_provincia)
+alter table Comuna
+   add constraint fk_ComunaReferenceProvincia foreign key (IdProvincia)
+      references Provincia (IdProvincia)
       on delete restrict on update restrict;
 
-alter table provincia
-   add constraint fk_provinci_reference_region foreign key (id_region)
-      references region (id_region)
+alter table Provincia
+   add constraint fk_ProvinciaReferenceRegion foreign key (IdRegion)
+      references Region (IdRegion)
       on delete restrict on update restrict;
 
-alter table usuario
-   add constraint fk_usuario_reference_persona foreign key (id_persona)
-      references persona (id_persona)
+alter table Usuario
+   add constraint fk_UsuarioReferencePersona foreign key (IdPersona)
+      references Persona (IdPersona)
       on delete restrict on update restrict;
 
-alter table usuario
-   add constraint fk_usuario_reference_perfil_u foreign key (id_perfil_usuario)
-      references perfil_usuario (id_perfil_usuario)
+alter table Usuario
+   add constraint fk_UsuarioReferencePerfilUsuario foreign key (IdPerfilUsuario)
+      references PerfilUsuario (IdPerfilUsuario)
       on delete restrict on update restrict;
 
-alter table persona
-   add constraint fk_persona_reference_comuna foreign key (id_comuna)
-      references comuna (id_comuna)
+alter table Persona
+   add constraint fk_PersonaReferenceComuna foreign key (IdComuna)
+      references Comuna (IdComuna)
       on delete restrict on update restrict;
